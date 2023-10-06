@@ -1,0 +1,11 @@
+-r REQUIREMENTS
+
+black
+ruff-lsp
+python-language-server[all]
+rope
+pyflakes
+autopep8
+pydocstyle
+pycodestyle
+mccabe
