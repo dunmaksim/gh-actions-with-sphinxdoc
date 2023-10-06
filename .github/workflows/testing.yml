@@ -1,0 +1,24 @@
+---
+name: testing
+on: [push]
+jobs:
+  validate-project:
+    name: validate-project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install python requirements
+        run: pip3 install -r REQUIREMENTS
+
+      - name: Update packages
+        run: apt-get update
+
+      - name: Install make, graphviz and JRE
+        run: apt-get install make graphviz default-jre --yes
+
+      - name: Buils Sphinx project
+        run: make dirhtml
+
+      - name: Validate links
+        run: make linkcheck
